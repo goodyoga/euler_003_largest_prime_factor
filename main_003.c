@@ -7,68 +7,85 @@
 void usage(void);
 char *prog;
 
-//
-// @startuml
-// participant defaults
-// participant divider
-// participant cur
-// 
-// note over defaults,cur:  [Problem 3] Largest prime factor
-// 
-// break h option
-// defaults->defaults: PRINT(usage)
-// defaults->defaults: exit(EXIT_SUCCESS)
-// end
-// defaults->defaults: a number = 600851475143UL;
-// opt n option
-// defaults->defaults: a number = value by cmdline
-// end
-// 
-// cur->cur: cur = a number
-// divider->divider:divider = 2 
-// note right of divider: 2 is the smallest prime number as a factor.
-// 
-// loop divider
-// note over divider,cur
-// this loop finds a number's factors begining from small factor.
-// so, if we got all factors, the last one is the largest prime factor.
-// 
-// example: a number: 90
-// 
-// cur = 90, divider = 2 : is a factor
-// cur = 45, divider = 2 : is not a factor
-//     divider++
-// cur = 45, divider = 3 : is a factor
-// cur = 15, divider = 3 : is a factor again
-// cur = 5, divider = 3 : is not a factor
-//     divider++
-// cur = 5, divider = 4 : is not a factor
-//     /*****
-//      * 4 is not a prime number.
-//      * but we already divided a number by smaller prime numbers as a factor(i.e. 2 or 3, here).
-//      * so we can safely ignore the "divider" that is not a prime number.
-//      * if we can divide "cur", it is a prime factor.
-//      *****/
-//    divider++
-// cur = 5, divider = 5 : is a factor
-// now cur == divider, so 5 is the largest prime factor
-// end note
-// break divider==cur
-// note over divider,cur: end
-// end
-// 
-// alt divider is a factor(cur % divider == 0)
-// cur->cur: cur = cur/divider
-// else not a factor
-// divider->divider: divider++
-// note over divider: try next factor
-// end 
-// 
-// end loop
-// 
-// cur->cur: PRINT(cur)
-// @enduml
-//
+/**
+ * @file
+ * @addtogroup EULER_003 Euler_003
+ * @{
+ */
+
+/**
+ * @brief largest prime factor
+ * 
+ * @param argc
+ * @param argv h option for help, n option to set a number.
+ * @return
+ * 
+ * 
+ * @startuml{euler_003_largest_prime_factor.png}
+ * participant defaults
+ * participant divider
+ * participant cur
+ * 
+ * note over defaults,cur:  [Problem 3] Largest prime factor
+ * 
+ * break h option
+ *     defaults->defaults: PRINT(usage)
+ *     defaults->defaults: exit(EXIT_SUCCESS)
+ * end
+ * defaults->defaults: a number = 600851475143UL;
+ * opt n option
+ *     defaults->defaults: a number = value by cmdline
+ * end
+ * 
+ * alt first iterration
+ *     cur->cur: cur = a number
+ *     divider->divider:divider = 2 
+ *     note right of divider: 2 is the smallest prime number as a factor.
+ * end alt
+ * 
+ * loop while divider != cur
+ *     note over divider,cur
+ *         this loop finds a number's factors begining from small factor.
+ *         so, if we got all factors, the last one is the largest prime factor.
+ * 
+ *         example: a number: 90
+ * 
+ *         cur = 90, divider = 2 : is a factor
+ *         cur = 45, divider = 2 : is not a factor
+ *             divider++
+ *         cur = 45, divider = 3 : is a factor
+ *         cur = 15, divider = 3 : is a factor again
+ *         cur = 5, divider = 3 : is not a factor
+ *             divider++
+ *         cur = 5, divider = 4 : is not a factor
+ *          //
+ *          // 4 is not a prime number.
+ *          // but we already divided a number by smaller prime numbers as a factor(i.e. 2 or 3, here).
+ *          // so we can safely ignore the "divider" that is not a prime number.
+ *          // if we can divide "cur", it is a prime factor.
+ *          //
+ *             divider++
+ *         cur = 5, divider = 5 : is a factor
+ *         now cur == divider, so 5 is the largest prime factor
+ *     end note
+ *     
+ *     break divider==cur
+ *         note over divider,cur: end
+ *     end
+ * 
+ *     alt divider is a factor(cur % divider == 0)
+ *         cur->cur: cur = cur/divider
+ *     else not a factor
+ *         divider->divider: divider++
+ *         note over divider: try next factor
+ *     end 
+ * 
+ * end loop
+ * 
+ * cur->cur: PRINT(cur)
+ * @enduml
+ *
+*/
 
 int main(int argc, char **argv)
 {
@@ -116,7 +133,9 @@ solved:
 }
 
 
-
+/**
+ * @brief show help
+ */
 void usage(void)
 {
     printf("    http://projecteuler.net/problem=3\n");
@@ -128,4 +147,7 @@ void usage(void)
     return;
 }
 
+/**
+ * @}
+ */
 
