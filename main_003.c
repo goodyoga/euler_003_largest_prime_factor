@@ -5,11 +5,10 @@
 #include <unistd.h>   /* getopt */
 
 void usage(void);
-char *prog;
 
 /**
  * @file
- * @addtogroup EULER_003 Euler_003
+ * @addtogroup EULER_003 Euler_003_largest_prime_factor
  * @{
  */
 
@@ -22,6 +21,7 @@ char *prog;
  * 
  * 
  * @startuml{euler_003_largest_prime_factor.png}
+ * title euler_003_largest_prime_factor.png
  * participant defaults
  * participant divider
  * participant cur
@@ -93,7 +93,6 @@ int main(int argc, char **argv)
     unsigned long long int cur, divider;
     int opt;
     char *p;
-    prog = argv[0];
 
     while ( -1 != (opt = getopt(argc, argv, "hn:")) )
     {
@@ -132,6 +131,10 @@ solved:
     return EXIT_SUCCESS;
 }
 
+/**
+ * @}
+ */
+
 
 /**
  * @brief show help
@@ -146,8 +149,4 @@ void usage(void)
            "    -n <number>: solve this with <number>\n");
     return;
 }
-
-/**
- * @}
- */
 
