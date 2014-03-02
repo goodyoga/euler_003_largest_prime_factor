@@ -4,21 +4,32 @@
 #include <stdlib.h>   /* atoi,exit   */
 #include <unistd.h>   /* getopt */
 
-void usage(void);
-
 /**
  * @file
  * @addtogroup EULER_003 Euler_003_largest_prime_factor
  * @{
  */
 
+
 /**
- * @brief largest prime factor
+ * @brief shows help.
+ */
+void usage(void);
+
+
+/**
+ * @brief largest prime factor.
  * 
  * @param argc
- * @param argv h option for help, n option to set a number.
- * @return
+ * @param argv -h option for help\n-n=&lt;number&gt; option to set a number.
  * 
+ * @return EXIT_SUCCESS alyways returns this.
+ * 
+ * @pre
+ * @post
+ * @note
+ * @test main_003 is not ready for testing yet.
+ * @bug
  * 
  * @startuml{euler_003_largest_prime_factor.png}
  * title euler_003_largest_prime_factor.png
@@ -86,6 +97,17 @@ void usage(void);
  * @enduml
  *
 */
+int main(int argc, char **argv);
+
+
+/**
+ * @}
+ */
+
+
+
+
+
 
 int main(int argc, char **argv)
 {
@@ -131,14 +153,7 @@ solved:
     return EXIT_SUCCESS;
 }
 
-/**
- * @}
- */
 
-
-/**
- * @brief show help
- */
 void usage(void)
 {
     printf("    http://projecteuler.net/problem=3\n");
