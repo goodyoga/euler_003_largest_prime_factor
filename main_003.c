@@ -5,7 +5,7 @@
 #include <unistd.h>   /* getopt */
 
 /**
- * @file
+ * @file main_003.c
  * @addtogroup EULER_003 Euler_003_largest_prime_factor
  * @{
  */
@@ -106,6 +106,11 @@ int main(int argc, char **argv);
 
 
 
+
+
+/***********************************
+ * Implementation
+ ***********************************/
 
 
 
